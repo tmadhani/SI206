@@ -10,4 +10,9 @@
 
 # Deliverables
 # Make sure the new page is uploaded to your GitHub account.
-ggfg
+import requests
+from bs4 import BeautifulSoup
+
+base_url4 = "https://www.si.umich.edu/programs/bachelor-science-information/bsi-admissions"
+r4 = requests.get(base_url4)
+soup4 = BeautifulSoup(r4.text,"lxml")
