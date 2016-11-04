@@ -12,27 +12,34 @@
 print("START*******")
 
 import nltk
+import random
 from nltk.book import text2
-from nltk import word_tokenize,sent_tokenize
 
-def text_from_file(filename):
-    raw = open(filename)
-    text = raw.read()
-    raw.close()
-    return text
-print(text_from_file(text2))
-# f = open(text2, 'r')
-# para = f.read()
-# tokens = texts(text2)
-# print(tokens)
-# print("TOKENS")
-# print(tokens)
-# tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
-# print("TAGGED TOKENS")
-# print(tagged_tokens)
-# if debug:
-# 	print ("First few tagged tokens are:")
-# 	for tup in tagged_tokens[:5]:
-# 		print (tup)
+data = text2[:150]
+
+tagged_tokens = nltk.pos_tag(data)
+
+print("TAGGED TOKENS")
+print(tagged_tokens)
+tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective","IN": "a preposition or conjunction"}
+substitution_probabilities = {"NN":.15,"NNS":.1,"VB":.1,"JJ":.1,"IN":.1}
+
+def spaced(word):
+	if word in [",", ".", "?", "!", ":"]:
+		return word
+	else:
+		return " " + word
+
+final_words = []
+
+
+for (word, tag) in tagged_tokens:
+	if tag not in substitution_probabilities or random.random() > substitution_probabilities[tag]:
+		final_words.append(spaced(word))
+	else:
+		new_word = input("Please enter %s:\n" % (tagmap[tag]))
+		final_words.append(spaced(new_word))
+
+print ("".join(final_words))
 
 print("\n\nEND*******")
