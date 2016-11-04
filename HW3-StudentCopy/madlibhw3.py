@@ -16,11 +16,9 @@ import random
 from nltk.book import text2
 
 data = text2[:150]
-
+print(data)
 tagged_tokens = nltk.pos_tag(data)
 
-print("TAGGED TOKENS")
-print(tagged_tokens)
 tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective","IN": "a preposition or conjunction"}
 substitution_probabilities = {"NN":.15,"NNS":.1,"VB":.1,"JJ":.1,"IN":.1}
 

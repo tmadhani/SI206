@@ -6,6 +6,32 @@
 # 3) Print the average polarity of the results
 
 # Be prepared to change the search term during demo.
+import tweepy
+import nltk
+from textblob import TextBlob
+
+access_token = "746391890174550016-kfNzCZopGwTBo4mvkCGoZLgvaajxalL"
+access_token_secret = "lheX9mXZCzbU3jDMiGVXI7msij1k8Jys7IIwnm2ry5Ab9"
+consumer_key = "LSyEcZXGuzkC5ROdGDOOqFmNe"
+consumer_secret = "GcnLqTnfHR78zBMImkH7VwCL84pJAQbCHi95cJRqCITsIdlOia"
+
+auth = tweepy.OAuthHandler(consumer_key,consumer_secret)
+auth.set_access_token(access_token,access_token_secret)
+
+api = tweepy.API(auth)
+#Now we can Create Tweets, Delete Tweets, and Find Twitter Users
+
+public_tweets = api.search('elections2016')
+
+for tweet in public_tweets:
+	print(tweet.text)
+	analysis = TextBlob(tweet.text)
+	print(analysis.sentiment)
+
+	
+#Learn more about Search
+#https://dev.twitter.com/rest/public/search
+
 
 
 print("Average subjectivity is")

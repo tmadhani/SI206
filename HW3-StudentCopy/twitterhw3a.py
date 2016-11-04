@@ -18,7 +18,7 @@ auth.set_access_token(accs_tok, accs_sec)
 api = tweepy.API(auth)
 
 
-update_status = api.update_with_media("pink-logo.png", "#UMSI-206 #Proj3")
+update_status = api.update_with_media("pink-logo.png", "#UMSI206 #Proj3")
 
 
 print("""No output necessary although you 
