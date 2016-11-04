@@ -11,5 +11,28 @@
 # 1) Print the new text
 print("START*******")
 
+import nltk
+from nltk.book import text2
+from nltk import word_tokenize,sent_tokenize
+
+def text_from_file(filename):
+    raw = open(filename)
+    text = raw.read()
+    raw.close()
+    return text
+print(text_from_file(text2))
+# f = open(text2, 'r')
+# para = f.read()
+# tokens = texts(text2)
+# print(tokens)
+# print("TOKENS")
+# print(tokens)
+# tagged_tokens = nltk.pos_tag(tokens) # gives us a tagged list of tuples
+# print("TAGGED TOKENS")
+# print(tagged_tokens)
+# if debug:
+# 	print ("First few tagged tokens are:")
+# 	for tup in tagged_tokens[:5]:
+# 		print (tup)
 
 print("\n\nEND*******")
