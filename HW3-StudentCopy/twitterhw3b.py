@@ -22,17 +22,18 @@ api = tweepy.API(auth)
 #Now we can Create Tweets, Delete Tweets, and Find Twitter Users
 
 public_tweets = api.search('elections2016')
-
-for tweet in public_tweets:
-	print(tweet.text)
-	analysis = TextBlob(tweet.text)
-	print(analysis.sentiment)
-
+count = 0
+# for tweet in public_tweets:
+# 	print(tweet.text)
+for item in public_tweets:
+	analysis = TextBlob(item.text)
+	count = count + analysis.sentiment.subjectivity
+print("Average subjectivity is" + str(count/len(public_tweets)))
 	
 #Learn more about Search
 #https://dev.twitter.com/rest/public/search
 
 
-
-print("Average subjectivity is")
-print("Average polarity is")
+# 
+# print("Average subjectivity is")
+# print("Average polarity is")
