@@ -21,5 +21,4 @@ api = tweepy.API(auth)
 update_status = api.update_with_media("pink-logo.png", "#UMSI206 #Proj3")
 
 
-print("""No output necessary although you 
-	can print out a success/failure message if you want to.""")
+print("""Success! Check your twitter!""")
