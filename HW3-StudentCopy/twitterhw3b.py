@@ -23,8 +23,8 @@ api = tweepy.API(auth)
 
 public_tweets = api.search('elections2016')
 count = 0
-# for tweet in public_tweets:
-# 	print(tweet.text)
+for tweet in public_tweets:
+	print(tweet.text)
 for item in public_tweets:
 	analysis = TextBlob(item.text)
 	count = count + analysis.sentiment.subjectivity
