@@ -28,7 +28,12 @@ count = 0
 for item in public_tweets:
 	analysis = TextBlob(item.text)
 	count = count + analysis.sentiment.subjectivity
-print("Average subjectivity is" + str(count/len(public_tweets)))
+print("Average subjectivity is " + str(count/len(public_tweets)))
+new_count = 0
+for item in public_tweets:
+	analysis = TextBlob(item.text)
+	new_count = new_count + analysis.sentiment.polarity
+print("Average polarity is " + str(new_count/len(public_tweets)))
 	
 #Learn more about Search
 #https://dev.twitter.com/rest/public/search
