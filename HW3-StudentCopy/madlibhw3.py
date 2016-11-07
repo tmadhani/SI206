@@ -16,7 +16,10 @@ import random
 from nltk.book import text2
 
 data = text2[:150]
-print(data)
+s = ""
+for item in data:
+	s = s + " " + item
+
 tagged_tokens = nltk.pos_tag(data)
 
 tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective","IN": "a preposition or conjunction"}

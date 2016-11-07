@@ -12,7 +12,16 @@
 # Make sure the new page is uploaded to your GitHub account.
 import requests
 from bs4 import BeautifulSoup
+soup = BeautifulSoup(open("myumsipage.html"), 'html.parser')
+item = soup.find_all("""""<iframe width="560" height="315" src="https://www.youtube.com/embed/mimp_3gquc4?feature=oembed" frameborder="0" allowfullscreen=""></iframe>""""")
+	# if l == "students":
+	# 	new_text = unicode(item).replace("students","AMAZING student.")
+	# 	item.replace_with(new_text)
+soup = BeautifulSoup(item)
+a_tag = soup.a
 
-base_url4 = "https://www.si.umich.edu/programs/bachelor-science-information/bsi-admissions"
-r4 = requests.get(base_url4)
-soup4 = BeautifulSoup(r4.text,"lxml")
+new_tag = soup.new_tag("src")
+new_tag.string = "media/logo.png"
+a_tag.i.replace_with(new_tag)
+a_tag
+# <a href="http://example.com/">I linked to <b>example.net</b></a>
