@@ -24,10 +24,10 @@ for word in x:
     new_txt = str(word).replace('student', 'AMAZING student')
     word.replace_with(new_txt)
 
-for item in soup.findAll('iframe'):
+for item in soup.find_all('iframe'):
 	item['src'] = "/Users/tmadhani/desktop/SI206/HW3-StudentCopy/LilBub.jpg"
 
-for item in soup.findAll('img'):
+for item in soup.find_all('img'):
 	item['src'] = "/Users/tmadhani/desktop/SI206/HW3-StudentCopy/media/logo.png"
 
 text_file = open("bshw3.html", "w")
