@@ -11,17 +11,28 @@
 # Deliverables
 # Make sure the new page is uploaded to your GitHub account.
 import requests
+import re
 from bs4 import BeautifulSoup
-soup = BeautifulSoup(open("myumsipage.html"), 'html.parser')
-item = soup.find_all("""""<iframe width="560" height="315" src="https://www.youtube.com/embed/mimp_3gquc4?feature=oembed" frameborder="0" allowfullscreen=""></iframe>""""")
-	# if l == "students":
-	# 	new_text = unicode(item).replace("students","AMAZING student.")
-	# 	item.replace_with(new_text)
-soup = BeautifulSoup(item)
-a_tag = soup.a
 
-new_tag = soup.new_tag("src")
-new_tag.string = "media/logo.png"
-a_tag.i.replace_with(new_tag)
-a_tag
+
+base_url = 'https://www.si.umich.edu/programs/bachelor-science-information/bsi-admissions'
+r = requests.get(base_url)
+soup = BeautifulSoup(r.text, "html.parser")
+
+x = soup.find_all(text = re.compile('student'))
+for word in x:
+    new_txt = str(word).replace('student', 'AMAZING student')
+    word.replace_with(new_txt)
+
+for item in soup.findAll('iframe'):
+	item['src'] = "/Users/tmadhani/desktop/SI206/HW3-StudentCopy/LilBub.jpg"
+
+for item in soup.findAll('img'):
+	item['src'] = "/Users/tmadhani/desktop/SI206/HW3-StudentCopy/media/logo.png"
+
+text_file = open("bshw3.html", "w")
+text_file.write(str(soup))
+text_file.close()
+print('Done')
+
 # <a href="http://example.com/">I linked to <b>example.net</b></a>
