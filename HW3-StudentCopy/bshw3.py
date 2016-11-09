@@ -25,7 +25,7 @@ for word in x:
     word.replace_with(new_txt)
 
 for item in soup.find_all('iframe'):
-	item['src'] = "/Users/tmadhani/desktop/SI206/HW3-StudentCopy/LilBub.jpg"
+	item['src'] = "/Users/tmadhani/desktop/SI206/HW3-StudentCopy/media/propic.jpg"
 
 for item in soup.find_all('img'):
 	item['src'] = "/Users/tmadhani/desktop/SI206/HW3-StudentCopy/media/logo.png"
