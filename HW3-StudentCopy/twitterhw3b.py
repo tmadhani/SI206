@@ -19,19 +19,26 @@ auth = tweepy.OAuthHandler(consumer_key,consumer_secret)
 auth.set_access_token(access_token,access_token_secret)
 
 api = tweepy.API(auth)
+#we can now read, write, and access tweets
 
-public_tweets = api.search('#elections2016')
+public_tweets = api.search('#love')
 count = 0
 for tweet in public_tweets:
 	print(tweet.text)
+#accesses recent tweets that used the '#love' and prints their text
+
 for item in public_tweets:
 	analysis = TextBlob(item.text)
 	count = count + analysis.sentiment.subjectivity
 print("\nAverage subjectivity is " + str(count/len(public_tweets)))
+#iterates through the list of tweets that use "#love" and, after initializing a counter, tallies the total subjectivity
+#then, after tallying the total subjectivity, divides the count by the len of public_tweets
+
 new_count = 0
 for item in public_tweets:
 	analysis = TextBlob(item.text)
 	new_count = new_count + analysis.sentiment.polarity
 print("Average polarity is " + str(new_count/len(public_tweets)))
-	
+#iterates through the list of  tweets that use "#love" and, after initializing a counter, tallies the total sentiment
+#then, after tallying the total sentiment, divides the count by the len of public_tweets
 

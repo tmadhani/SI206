@@ -16,8 +16,9 @@ auth = tweepy.OAuthHandler(cons_key, cons_sec)
 auth.set_access_token(accs_tok, accs_sec)
 
 api = tweepy.API(auth)
+#we can create, access, and update tweets now
 
-update_status = api.update_with_media("LilBub.jpg", "#UMSI206 #Proj3")
-
+update_status = api.update_with_media("LilBub.jpg", "#UMSI-206 #Proj3")
+#updates status of personal twitter with media image of Lil Bub and adds #USMI206 #Proj3 to accompany the image in the tweet
 
 print("""Success! Check your twitter!""")

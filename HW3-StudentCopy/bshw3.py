@@ -21,18 +21,20 @@ soup = BeautifulSoup(r.text, "html.parser")
 
 x = soup.find_all(text = re.compile('student'))
 for word in x:
-    new_txt = str(word).replace('student', 'AMAZING student')
-    word.replace_with(new_txt)
+    new_word = str(word).replace('student', 'AMAZING student')
+    word.replace_with(new_word)
+#iterates through each word in 'x,' which compiled all mentions of word 'student' and replaces it with 'AMAZING student'
 
 for item in soup.find_all('iframe'):
 	item['src'] = "/Users/tmadhani/desktop/SI206/HW3-StudentCopy/media/propic.jpg"
+#finds iframe/video in the html page and replaces it with an image of me from my folder
 
 for item in soup.find_all('img'):
 	item['src'] = "/Users/tmadhani/desktop/SI206/HW3-StudentCopy/media/logo.png"
+#finds all images in the html page and replaces it with the UMSI logo Colleen provided
 
-text_file = open("bshw3.html", "w")
-text_file.write(str(soup))
-text_file.close()
-print('Done')
-
-# <a href="http://example.com/">I linked to <b>example.net</b></a>
+f = open("bshw3.html", "w")
+f.write(str(soup))
+f.close()
+print('Success!')
+#creates new html file and writes all code from above into said file

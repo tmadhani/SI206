@@ -19,11 +19,16 @@ data = text2[:150]
 s = ""
 for item in data:
 	s = s + " " + item
+print("ORIGINAL TEXT")
+print(s)
+#concatenates words in text2 so that they appear as a string and not a list
 
 tagged_tokens = nltk.pos_tag(data)
+#tags parts of speech on up to 150 words from text2
 
 tagmap = {"NN":"a noun","NNS":"a plural noun","VB":"a verb","JJ":"an adjective","IN": "a preposition or conjunction"}
 substitution_probabilities = {"NN":.15,"NNS":.1,"VB":.1,"JJ":.1,"IN":.1}
+#creates maps of all the parts of speech in text2 and establishes the probability that you will be asked to replace one of them
 
 def spaced(word):
 	if word in [",", ".", "?", "!", ":"]:
@@ -33,14 +38,16 @@ def spaced(word):
 
 final_words = []
 
-
 for (word, tag) in tagged_tokens:
 	if tag not in substitution_probabilities or random.random() > substitution_probabilities[tag]:
 		final_words.append(spaced(word))
 	else:
 		new_word = input("Please enter %s:\n" % (tagmap[tag]))
 		final_words.append(spaced(new_word))
-
+print("NEW TEXT")
 print ("".join(final_words))
 
 print("\n\nEND*******")
+
+
+
